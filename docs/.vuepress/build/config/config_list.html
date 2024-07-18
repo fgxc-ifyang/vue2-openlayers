@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>默认配置 | Vue2-Openlayers中文文档</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="数据驱动地图">
+    
+    <link rel="preload" href="/Vue2-Openlayers/assets/css/0.styles.0269d8ba.css" as="style"><link rel="preload" href="/Vue2-Openlayers/assets/js/app.d1279973.js" as="script"><link rel="preload" href="/Vue2-Openlayers/assets/js/2.addc2c9c.js" as="script"><link rel="preload" href="/Vue2-Openlayers/assets/js/9.8845b12a.js" as="script"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/10.9682c82f.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/11.901629e2.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/12.a64b8382.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/13.ffccbb2e.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/14.e5e34667.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/15.da98dd6d.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/16.33423528.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/17.af50fbb7.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/18.846dbba2.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/19.53b10a18.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/20.df86c36c.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/3.ebe3b2e3.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/4.6506c3de.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/5.6f0fa82e.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/6.5bff1b90.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/7.74b34854.js"><link rel="prefetch" href="/Vue2-Openlayers/assets/js/8.f5ac09c4.js">
+    <link rel="stylesheet" href="/Vue2-Openlayers/assets/css/0.styles.0269d8ba.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Vue2-Openlayers/" class="home-link router-link-active"><!----> <span class="site-name">Vue2-Openlayers中文文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>配置指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Vue2-Openlayers/config/" aria-current="page" class="sidebar-link">参数说明</a></li><li><a href="/Vue2-Openlayers/config/config_list.html" aria-current="page" class="active sidebar-link">默认配置</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="默认配置"><a href="#默认配置" class="header-anchor">#</a> 默认配置</h1> <p>你可以修改这些配置项，这些都是默认的，关于每个参数，我们会详细说明</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'edit'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">showToolbar</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">showGrid</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">showContextmenu</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">showBottomBar</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">view</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">height</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientHeight<span class="token punctuation">,</span>
+    <span class="token function-variable function">width</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientWidth<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">row</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">len</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">col</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">len</span><span class="token operator">:</span> <span class="token number">26</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">indexWidth</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">minWidth</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">bgcolor</span><span class="token operator">:</span> <span class="token string">'#ffffff'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">align</span><span class="token operator">:</span> <span class="token string">'left'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">valign</span><span class="token operator">:</span> <span class="token string">'middle'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">textwrap</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">strike</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">underline</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'#0a0a0a'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">font</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">size</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">bold</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">italic</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Vue2-Openlayers/config/" class="prev router-link-active">
+        参数说明
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Vue2-Openlayers/assets/js/app.d1279973.js" defer></script><script src="/Vue2-Openlayers/assets/js/2.addc2c9c.js" defer></script><script src="/Vue2-Openlayers/assets/js/9.8845b12a.js" defer></script>
+  </body>
+</html>
