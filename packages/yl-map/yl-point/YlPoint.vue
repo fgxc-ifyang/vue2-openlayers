@@ -85,6 +85,16 @@ export default {
         }
       }
     },
+    pointAnimation: {
+      handler(newVal) {
+        if (newVal) {
+          this.checkPointAnimation();
+        } else {
+          this.clearAllInterval();
+        }
+      },
+      immediate: true,
+    }
   },
   data() {
     return {
@@ -110,7 +120,7 @@ export default {
     },
     // 判断是否开启点位扩散动画
     checkPointAnimation() {
-      if (this.pointAnimation) {
+      if (this.pointAnimation&&this.mapLayers&&this.mapLayers.length>0) {
         if (this.interval) { // 定时器存在，需清空
           clearInterval(this.interval)
         }

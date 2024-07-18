@@ -1,11 +1,7 @@
 <template>
-    <div class="wapper">
+    <div class="yl-map-wapper">
       <div :id="mapId" :ref="mapId" style="height:100%;width:100%;">
-        <slot name="yl-map-layers"></slot>
-        <div id="popup" class="ol-popup">
-          <slot name="yl-map-overlay">
-          </slot>
-      </div>
+        <slot></slot>
       </div>
     </div>
   </template>
@@ -29,20 +25,9 @@
   export default {
     name: "YlMap",
     props: {
-      baseMap: {
-        type: Object,
-        default: function() {
-          // openlayers叠加mapbox自定义底图
-          let accessToken = 'pk.eyJ1IjoiZ2FwNDE3IiwiYSI6ImNseTlsc2J3ZDBvZGwybHNhanhnbWRibTMifQ.QSQ15RREYt2jYX79hNeMnA';
-          let mapBoxStyleId = 'clybcf4b900dp01pf94zj0mbh';
-          let mapboxUserName = 'gap417'
-          return new TileLayer({
-            source: new XYZ({
-            url: `https://api.mapbox.com/styles/v1/${mapboxUserName}/${mapBoxStyleId}/tiles/256/{z}/{x}/{y}?access_token=${accessToken}`
-          }),
-            name: "底图"
-          });
-        }
+      mapUrl: {
+        type: String,
+        default: 'https://webrd04.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}'
       },
       center: {
         type: Array,
@@ -74,25 +59,26 @@
     methods: {
       //弹窗
       showPopup(parms){
-        // parms.element = document.getElementById('popup');
-        console.info(parms)
-        //弹窗显示方法
-        this.overlay = new Overlay({
-          element: document.getElementById('popup'),
-          //是否自动平移，即假如标记在屏幕边缘，弹出时自动平移地图使弹出框完全可见
-          autoPan: parms.duration!=null?true:false,
-          autoPanAnimation: {
-            duration: parms.duration
-          },
-          offset: [5, -25], // 偏移量
-          positioning: "bottom-center", // 对齐方式
-          coordinate: [104.06, 30.67], // 位置
-          ...parms
-        });
-        //设置overlay的显示位置
-        this.overlay.setPosition(parms.position);
-        //显示overlay
-        this.map.addOverlay(this.overlay);
+        if(parms&&parms.element){
+          //弹窗显示方法
+          this.overlay = new Overlay({
+            element: document.getElementById('popup'),
+            //是否自动平移，即假如标记在屏幕边缘，弹出时自动平移地图使弹出框完全可见
+            autoPan: parms.duration!=null?true:false,
+            autoPanAnimation: {
+              duration: parms.duration
+            },
+            offset: [5, -25], // 偏移量
+            positioning: "bottom-center", // 对齐方式
+            coordinate: [104.06, 30.67], // 位置
+            ...parms
+          });
+          //设置overlay的显示位置
+          this.overlay.setPosition(parms.position);
+          //显示overlay
+          this.map.addOverlay(this.overlay);
+        }
+
       },
       close(){
         //弹窗关闭方法（防止外部调用此方法——所以先要判断是否为空）
@@ -119,23 +105,47 @@
           box3 = Math.max.apply(null, box3s);
           box4 = Math.max.apply(null, box4s);
           let view = this.map.getView();
-        //   let size = this.map.getSize();
+          // let size = this.map.getSize();
           let mzoom = view.getZoom();
           let coorBox = [box1, box2, box3, box4];
           //fit()其它属性无效--暂定解决方案   animate
           view.fit(coorBox);
           if(state){
             view.animate({
-              zoom: zoom==undefined?mzoom:zoom,
-              duration: duration==undefined?1000:duration,
+              zoom: zoom?mzoom:zoom,
+              duration: duration?1000:duration,
             });
           }
 
         }
       },
+      fitViewSource(source) {
+        let view = this.map.getView();
+        var feature = source.getFeatures()[0];
+        var polygon = feature.getGeometry();
+        view.fit(polygon, { padding: [50, 50, 50, 150] });
+      },
+      fitViewfeature(feature) {
+        let view = this.map.getView();
+        var polygon = feature.getGeometry();
+        view.fit(polygon, { padding: [300, 300, 300, 150] });
+      },
+      fitCenter(center, zoom, duration= 700) {
+      let view = this.map.getView();
+      let mzoom = view.getZoom();
+      function flyTo(location) {
+        view.animate({
+          center: location,
+          duration: duration,
+          zoom: mzoom?mzoom:zoom
+        });
+      }
+      if (center[0] && center[1]) {
+        flyTo(center);
+      }
+    },
       CustomEvent() {
         let _this = this;
-
         class Drag extends PointerInteraction {
           constructor() {
             super({
@@ -189,9 +199,10 @@
             //点击后执行的事件
             function clickEvent() {
               // 点击回调事件
-              _this.$emit("handleDownEvent",evt.coordinate, feature.values_._md_==undefined?feature.values_:feature.values_._md_, feature);
+              _this.$emit("handleDownFeatureEvent",{evtCoordinate:evt.coordinate, value:feature.values_._md_==undefined?feature.values_:feature.values_._md_, feature:feature,evt:evt,featureCoordinate:feature.getGeometry().getCoordinates()});
             }
           });
+          _this.$emit("handleDownEvent",evt)
         }
   
         /**
@@ -241,12 +252,12 @@
       }
     },
     created() {
-      console.info("map-created");
+      // console.info("map-created");
       this.mapId = "map" + new Date().getTime();
     },
     mounted() {
       let CustomEvent = this.CustomEvent();
-      console.info("地图组件挂载,id:" + this.mapId);
+      // console.info("地图组件挂载,id:" + this.mapId);
       let view = new View({
         center: this.center,
         projection: "EPSG:4326",
@@ -258,14 +269,21 @@
       const map = new Map({
         interactions: defaultInteractions().extend([new CustomEvent()]),
         target: this.$refs[this.mapId],
-        layers: [this.baseMap],
+        layers: [
+          new TileLayer({
+            source: new XYZ({
+            url: this.mapUrl
+          }),
+            name: "底图"
+          })
+        ],
         view: view
       });
       this.map = map;
       // this.$bus.$emit(this.mapId + "ready", {});
     },
     beforeDestroy() {
-      console.info("map-beforeDestroy");
+      // console.info("map-beforeDestroy");
       if (this.map) {
         this.map.setTarget(null);
         this.map = null;
@@ -275,7 +293,7 @@
   </script>
   
   <style scoped>
-  .wapper {
+  .yl-map-wapper {
     position: relative;
     width: 100%;
     height: 100%;

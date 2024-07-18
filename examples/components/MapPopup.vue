@@ -66,6 +66,7 @@ export default {
     margin-top: 0.625vw;
     padding: 1vw 1vw 0 1vw;
     flex-direction: column;
+    overflow-y: auto;
   }
 }
 .close_diago {

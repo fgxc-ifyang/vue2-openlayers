@@ -13,6 +13,17 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  devServer: {  
+    proxy: {  
+      '/file': {  
+        target: 'http://8.137.153.28:33660', // 你想要请求的服务器地址  
+        changeOrigin: true, // 是否改变源地址  
+        pathRewrite: {  
+          '^/api': '' // 重写路径，去掉 /api  
+        }  
+      }  
+    }  
+  },
   lintOnSave: true,
   css: {
     loaderOptions: {

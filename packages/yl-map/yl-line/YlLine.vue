@@ -88,7 +88,7 @@ export default {
     setLineStyle(info){
       // 优化 方法调用 多次调用问题
       let style = this.lineFun(info);
-      if(style&&style.color&&style.width){
+      if(style){
         let lintStyle = new Style({
           stroke: new Stroke({
             //地图连线的样式
@@ -150,9 +150,9 @@ export default {
     // todo  事件监听  优化
     // 任务调度
     // 兼容 vue3没有bus
-    this.$bus.$on(this.$parent.mapId + "ready", () => {
-      this.initData();
-    });
+    // this.$bus.$on(this.$parent.mapId + "ready", () => {
+    //   this.initData();
+    // });
   },
   beforeMount() {
   },

@@ -106,7 +106,7 @@ export function localConvert(list,lngName,latName,usePR){
     if(list instanceof Array){
         //原有点
         let locations = list.map(n=>{return {lat:n[latName],lng:n[lngName]}});
-        console.info('批量坐标转换数量:'+locations.length);
+        // console.info('批量坐标转换数量:'+locations.length);
         let results = batchGps2gd(locations);
         if(usePR){
             for(let i=0;i<results.length;i++){
@@ -121,7 +121,7 @@ export function localConvert(list,lngName,latName,usePR){
         }
 
     }else if((list instanceof Object)&&list!=null&&list!=undefined){
-        console.info('转换坐标1个');
+        // console.info('转换坐标1个');
        let res = gps2gd(list[latName],list[lngName]);
        if(usePR){
         list.P = res.lat;

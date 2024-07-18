@@ -116,9 +116,9 @@
     beforeCreate() {
     },
     created() {
-      this.$bus.$on(this.$parent.mapId + "ready", () => {
-        this.initData();
-      });
+      // this.$bus.$on(this.$parent.mapId + "ready", () => {
+      //   this.initData();
+      // });
     },
     beforeMount() {
     },

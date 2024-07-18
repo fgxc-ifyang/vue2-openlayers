@@ -1,21 +1,22 @@
 {
   "name": "vue2-openlayers",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.6",
+  "private": false,
+  "author": "ifyang",
+  "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "lib": "vue-cli-service build --target lib ./packages/index.js --name vue2-openlayers --dest vue2-openlayers && npm run lib-init",
+    "lib-init": "node -e \"const pkg = require('./package.json'); require('fs').writeFileSync('./vue2-openlayers/package.json', JSON.stringify(Object.assign({}, pkg, { version: pkg.version }), null, 2))\""
   },
   "dependencies": {
     "@turf/turf": "^7.0.0",
     "core-js": "^3.8.3",
-    "echarts": "4.9.0",
-    "js-cookie": "3.0.1",
     "ol": "^9.2.4",
-    "px2rem-loader": "^0.1.9",
-    "sass": "^1.43.4",
-    "sass-loader": "^14.2.1",
     "vue": "^2.6.14"
   },
   "devDependencies": {
@@ -27,7 +28,12 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "postcss-pxtorem": "^6.1.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "vuepress": "^1.9.10",
+    "echarts": "4.9.0",
+    "px2rem-loader": "^0.1.9",
+    "sass": "^1.43.4",
+    "sass-loader": "^14.2.1"
   },
   "eslintConfig": {
     "root": true,

@@ -287,18 +287,18 @@
     },
     beforeCreate() {},
     created() {
-      this.$bus.$on(this.$parent.mapId + "ready", () => {
-        if (this.map == null) {
-          this.map = this.$parent.map;
-        }
-        if (this.mapLayers.length > 0) {
-          for (let i in this.mapLayers) {
-            this.map.removeLayer(this.mapLayers[i]);
-          }
-          this.mapLayers = [];
-        }
-        this.addPointLayer();
-      });
+      // this.$bus.$on(this.$parent.mapId + "ready", () => {
+      //   if (this.map == null) {
+      //     this.map = this.$parent.map;
+      //   }
+      //   if (this.mapLayers.length > 0) {
+      //     for (let i in this.mapLayers) {
+      //       this.map.removeLayer(this.mapLayers[i]);
+      //     }
+      //     this.mapLayers = [];
+      //   }
+      //   this.addPointLayer();
+      // });
     },
     beforeMount() {},
     mounted() {},

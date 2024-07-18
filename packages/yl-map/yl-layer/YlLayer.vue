@@ -70,6 +70,19 @@
       };
     },
     methods: {
+      removeLayer(){
+        if(this.mapLayers.length>0){
+          for(let i in this.mapLayers){
+            this.map.removeLayer(this.mapLayers[i])
+          }
+          this.mapLayers = []
+        }
+      },
+      setMap(){
+        if(this.map==null){
+          this.map = this.$parent.map;
+        }
+      },
       addLayer(){
         // 创建GeoJSON源
           const geojsonSource = new VectorSource({
@@ -96,7 +109,7 @@
               }),
             }),
           });
-          
+          this.mapLayers.push(geojsonLayer);
           // 将GeoJSON图层添加到地图
           map.addLayer(geojsonLayer);
       },
@@ -104,18 +117,18 @@
     beforeCreate() {
     },
     created() {
-      this.$bus.$on(this.$parent.mapId + "ready", () => {
-        if(this.map==null){
-          this.map = this.$parent.map;
-        }
-        if(this.mapLayers.length>0){
-          for(let i in this.mapLayers){
-            this.map.removeLayer(this.mapLayers[i])
-          }
-          this.mapLayers = []
-        }
-        this.addLayer();
-      });
+      // this.$bus.$on(this.$parent.mapId + "ready", () => {
+      //   if(this.map==null){
+      //     this.map = this.$parent.map;
+      //   }
+      //   if(this.mapLayers.length>0){
+      //     for(let i in this.mapLayers){
+      //       this.map.removeLayer(this.mapLayers[i])
+      //     }
+      //     this.mapLayers = []
+      //   }
+      //   this.addLayer();
+      // });
     },
     beforeMount() {
     },
