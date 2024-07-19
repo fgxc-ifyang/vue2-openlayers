@@ -8,7 +8,7 @@ vue2-openlayers是一套基于Vue 2.0和openlayers地图的地图组件。
 
 
 ## 文档
-https://elemefe.github.io/vue2-openlayers
+https://fgxc-ifyang.github.io/vue2-openlayers/
 
 
 
@@ -17,7 +17,7 @@ https://elemefe.github.io/vue2-openlayers
 #### 安装
 
 ```
-npm install -S vue-amap
+npm install vue2-openlayers
 ```
 
 

@@ -7,7 +7,7 @@ module.exports = {
   markdown: {
     lineNumbers: true
   },
-  base: '/Vue2-Openlayers/',
+  base: '/vue2-openlayers/',
   extraWatchFiles: [
     '.vuepress/nav.js', 
     '.vuepress/sidebar.js'

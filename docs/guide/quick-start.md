@@ -5,7 +5,7 @@
 **安装**
 
 ```
-npm install vue2-openlayers -save
+npm install vue2-openlayers
 ```
 
 **引入 Vue2-Openlayers**
